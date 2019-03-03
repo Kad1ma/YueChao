@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuechao.mapper.HouseMapper">
+	
+	<select id="queryAllHouse" resultType="long">
+		select count(*) from house_information;
+	</select>
+	
+	<select id="queryHouseById" resultType="House">
+		select * from house_information  where house_property_num = #{house_property_num};
+	</select>
+	
+	<select id="queryHouseByPage" resultType="House">
+		SELECT * FROM 
+		  (SELECT T1.*,house_property_num RN FROM 
+			 (SELECT * FROM house_information WHERE 1=1) T1
+		  WHERE house_property_num &lt;= #{endIndex}) T2
+		WHERE T2.RN >= #{startIndex}
+	</select>
+	
+	<insert id="insertSaleHouse">
+		insert into house_information values(#{belongsToBuilding},#{unit},#{FLOOR},#{housePropertyNum},#{structure},#{propertyType},#{houseType},#{AREA},#{houseLandscape},#{towards},#{POSITION},#{decorateSituation},#{appendFacilities},#{housingPrice},#{housingPriceChangingInformation});
+	</insert>
+	
+	<delete id="deleteHouse" >
+		delete from house_information where house_property_num = #{house_property_num};
+	</delete>
+</mapper>

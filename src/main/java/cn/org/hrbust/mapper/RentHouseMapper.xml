@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuechao.mapper.RentHouseMapper">
+	<insert id="insertRentHouse" >
+		insert into rent_house values(#{belongsToBuilding},#{unit},#{FLOOR},#{houseType},#{propertyType},#{POSITION},#{decorateSituation},#{configurationFacilities},#{appendFacilities},#{housePropertyNum},#{structure},#{AREA},#{houseLandscape},#{towards},#{use},#{tel},#{rentMoney});
+	</insert>
+	
+	<select id="queryAllRentHouse" resultType="long">
+		select count(*) from rent_house;
+	</select>
+	
+	<select id="queryRentHouseByPage" resultType="RentHouse">
+		SELECT * FROM 
+		  (SELECT T1.*,house_property_num RN FROM 
+			 (SELECT * FROM rent_house WHERE 1=1) T1
+		  WHERE house_property_num &lt;= #{endIndex}) T2
+		WHERE T2.RN >= #{startIndex}
+	</select>
+	
+	<select id="queryRentHouseById" resultType="RentHouse">
+		select * from rent_house  where house_property_num = #{house_property_num};
+	</select>
+	
+	<delete id="deleteRentHouse" >
+		delete from rent_house where house_property_num = #{house_property_num};
+	</delete>
+</mapper>

@@ -1,0 +1,48 @@
+
+.font_div{
+	width:100%;
+	height:auto;
+	text-align:center;
+	font-size:22px;
+	color:#f00;
+	padding-top:20px;
+	padding-bottom:30px;
+}
+
+.myinfo_div{
+	width:100%;
+	height:auto;
+
+	margin:0px auto;
+	padding-top:20px;
+
+	
+}
+table{
+	margin:0px auto;
+text-align:left;
+}
+#man_tr{
+	text-align:center;
+	margin:0px auto;
+}
+input.submit{
+	padding:3px 10px 3px 10px;
+ color:#fff;
+ font-size:12px;
+ text-decoration:none;
+ border:1px solid #555;
+ background:url('../img/rep1.png') 50% 50% repeat-x;
+ display:inline;
+ margin-right:5px;
+ margin:0px auto;
+}
+input.submit:hover{
+	color:#f00;
+}
+
+.submit_div{
+
+	text-align:center;
+	margin-top:20px;
+}
